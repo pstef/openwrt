@@ -40,7 +40,8 @@ HOST_CONFIGURE_VARS += \
 
 HOST_CONFIGURE_ARGS := \
 	$(if $(MAKE_JOBSERVER),--parallel="$(MAKE_JOBSERVER)") \
-	--prefix=$(STAGING_DIR_HOST)
+	--prefix=$(STAGING_DIR_HOST) \
+	--system-liblzma
 
 ifneq ($(findstring c,$(OPENWRT_VERBOSE)),)
   HOST_MAKE_FLAGS += VERBOSE=1
