@@ -1,0 +1,25 @@
+--- a/lib/ext2fs/imager.c
++++ b/lib/ext2fs/imager.c
+@@ -67,7 +67,7 @@ errcode_t ext2fs_image_inode_write(ext2_filsys fs, int fd, int flags)
+ 	blk64_t		blk;
+ 	ssize_t		actual;
+ 	errcode_t	retval;
+-	loff_t		r;
++	ext2_loff_t		r;
+ 
+ 	buf = malloc(fs->blocksize * BUF_BLOCKS);
+ 	if (!buf)
+--- a/misc/e2fuzz.c
++++ b/misc/e2fuzz.c
+@@ -181,9 +181,9 @@ static int process_fs(const char *fsname)
+ 	int flags, fd;
+ 	ext2_filsys fs = NULL;
+ 	ext2fs_block_bitmap corrupt_map;
+-	loff_t hsize, count, off, offset, corrupt_bytes;
++	ext2_loff_t hsize, count, off, offset, corrupt_bytes;
+ 	unsigned char c;
+-	loff_t i;
++	ext2_loff_t i;
+ 
+ 	/* If mounted rw, force dryrun mode */
+ 	ret = ext2fs_check_if_mounted(fsname, &flags);
